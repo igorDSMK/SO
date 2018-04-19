@@ -16,7 +16,10 @@ def FCFS(processos):
     mediaEspera = esperas/len(processos)
     mediaResposta = respostas/len(processos)
     mediaRetorno = retornos/len(processos)
-
+    mediaEspera = round(mediaEspera, 1)
+    mediaResposta = round(mediaResposta, 1)
+    mediaRetorno = round(mediaRetorno, 1)
+    
     print("FCFS " + str(mediaRetorno) + " " + str(mediaResposta)
           + " " + str(mediaEspera))
     return

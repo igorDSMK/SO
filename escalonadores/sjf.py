@@ -1,18 +1,3 @@
-def Sort2(ar):    
-    menor = 0
-    x = 0
-    r = len(ar)
-    for i in range(0, r-1):
-        menor = i
-        for j in range(i+1, r):
-            if ar[j][1] < ar[menor][1]:
-                menor = j
-        if i !=menor:
-            temp = ar[menor]
-            ar[menor] = ar[i]
-            ar[i] = temp
-    return
-
 def SJF(processos):
     aux = []
     prontos = []
@@ -31,7 +16,7 @@ def SJF(processos):
         else:
             break
     
-    Sort2(prontos)
+    prontos = sorted(prontos, key=lambda proc: proc[1])
     
     while (len(aux) or len(prontos)):
 
@@ -60,7 +45,7 @@ def SJF(processos):
                 else:
                     break
                 
-        Sort2(prontos)
+        prontos = sorted(prontos, key=lambda proc: proc[1])
 
     retornos = esperas
     for i in range (0, len(processos)):
@@ -70,5 +55,8 @@ def SJF(processos):
     retornoMedio = retornos/len(processos)        
     respostaMedia = respostas/len(processos)
     esperaMedia = esperas/len(processos)
+    retornoMedio = round(retornoMedio, 1)        
+    respostaMedia = round(respostaMedia, 1)
+    esperaMedia = round(esperaMedia, 1)
     print("SJF " + str(retornoMedio) + " " + str(respostaMedia) + " " + str(esperaMedia))
     return

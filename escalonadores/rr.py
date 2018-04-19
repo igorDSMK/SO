@@ -24,7 +24,7 @@ def RR(processos, quantum):
             break
                 
     while(len(aux) or len(prontos)):
-        
+    
         if (prontos):
             ex = 1
             for i in range (0, quantum):
@@ -39,23 +39,31 @@ def RR(processos, quantum):
                     if respostas[i][0] == 0:
                         respostas[i][1] += 1
 
-                if prontos[0][1] <= 0:
+                if prontos[0][1] == 0:
                     prontos.pop(0)
                     respostaSoma += respostas[0][1]
                     respostas.pop(0)
                     tempo += 1               
                     ended = 1
                     break
+                
                 tempo += 1
+
+                for i in range (0, len(aux)):
+                    if (aux[0][0] <= tempo):
+                        prontos.append(aux.pop(0))
+                        respostas.append([0, 0])
+                    else:
+                        break
         else:
             tempo += 1
 
-        for i in range (0, len(aux)):
-            if (aux[0][0] <= tempo):
-                prontos.append(aux.pop(0))
-                respostas.append([0, 0])
-            else:
-                break
+            for i in range (0, len(aux)):
+                if (aux[0][0] <= tempo):
+                    prontos.append(aux.pop(0))
+                    respostas.append([0, 0])
+                else:
+                    break
             
         if (prontos):                
             if ended == 0 and ex == 1:
@@ -70,5 +78,8 @@ def RR(processos, quantum):
     esperaMedia = sum(esperas)/len(processos)
     respostaMedia = respostaSoma/len(processos)
     retornoMedio = retornoIndiv/len(processos)
+    esperaMedia = round(esperaMedia, 1)
+    respostaMedia = round(respostaMedia, 1)
+    retornoMedio = round(retornoMedio, 1)
     print("RR " + str(retornoMedio) + " " + str(respostaMedia) + " " + str(esperaMedia))    
     return
