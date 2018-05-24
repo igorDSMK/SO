@@ -5,17 +5,17 @@ from LRU import *
 ######################
 
 entradas = "entrada.txt"
-paginas = []
+mem = []
 quadros = 0
 entrada = open(entradas, "r")
 quadros = int(entrada.readline())
 
 for line in entrada:
-    paginas.append(line)
+    mem.append(line)
     
-for i in range(0, len(paginas)):
-    paginas[i] = int(paginas[i]) 
+for i in range(0, len(mem)):
+    mem[i] = int(mem[i]) 
 
-fifo (quadros, paginas)
-otimos (quadros, paginas)
-lru (quadros, paginas)
+fifo (quadros, mem)
+otimos (quadros, mem)
+lru (quadros, mem)

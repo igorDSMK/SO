@@ -1,4 +1,4 @@
-def lowest (ar):
+def highest (ar):
     maior = ar[0]
     maiorend = 0
     for i in range (1, len(ar)):
@@ -8,29 +8,29 @@ def lowest (ar):
     return maiorend
 
 
-def otimos (quadros, paginas):
-    mem = []
+def otimos (quadros, mem):
+    paginas = []
     contador = 0
     posicoes = []
 
     for i in range (0, quadros):
         posicoes.append(0)
 
-    for i in range(0, len(paginas)):        
-        itBusca = paginas[i]
-        if itBusca not in mem:
+    for i in range(0, len(mem)):        
+        itBusca = mem[i]
+        if itBusca not in paginas:
             contador += 1
-            if len(mem) == quadros:
-                for j in range(0, len(mem)):
+            if len(paginas) == quadros:
+                for j in range(0, len(paginas)):
                     posicoes[j] = 0
-                    elem = mem[j]
-                    for k in range(i+1, len(paginas)):
+                    elem = paginas[j]
+                    for k in range(i+1, len(mem)):
                         posicoes[j] += 1                        
-                        if elem == paginas[k]:                            
+                        if elem == mem[k]:                            
                             break
-                mem.pop(lowest(posicoes))
-                mem.append(itBusca)                
+                paginas.pop(highest(posicoes))
+                paginas.append(itBusca)                
             else:
-                mem.append(itBusca)                
+                paginas.append(itBusca)            
                 
     print ("OTM", contador)

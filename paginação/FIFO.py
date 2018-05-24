@@ -1,15 +1,15 @@
-def fifo(quadros, paginas):
-    mem = []
+def fifo(quadros, mem):
+    paginas = []
     contador = 0
         
-    for element in paginas:
+    for element in mem:
         itBusca = element
-        if itBusca not in mem:
+        if itBusca not in paginas:
             contador += 1
-            if len(mem) == quadros:
-                mem.pop(0)
-                mem.append(itBusca)                
+            if len(paginas) == quadros:
+                paginas.pop(0)
+                paginas.append(itBusca)                
             else:
-                mem.append(itBusca)                
+                paginas.append(itBusca)            
 
     print("FIFO", contador)
