@@ -6,7 +6,8 @@ def FCFS(processos):
     
     for i in range(1, len(processos)):
         if processos[i-1][1] - processos[i][0] + processos[i-1][0] <= 0:
-            retornos += processos[i][1]            
+            retornos += processos[i][1]   
+            tempo = 0
         else:
             tempo += processos[i-1][1] - processos[i][0] + processos[i-1][0]
             esperas += tempo
